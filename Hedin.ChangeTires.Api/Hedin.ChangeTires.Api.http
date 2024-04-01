@@ -1,0 +1,6 @@
+@Hedin.ChangeTires.Api_HostAddress = http://localhost:5110
+
+GET {{Hedin.ChangeTires.Api_HostAddress}}/changetires/
+Accept: application/json
+
+###
