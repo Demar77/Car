@@ -1,6 +1,6 @@
-namespace Hedin.ChangeTires.Api.Configurations
+﻿namespace Hedin.ChangeTires.Api.Configurations
 {
-    public class ExternalServiceSettings : IExternalServiceSettings
+    public interface IExternalServiceSettings
     {
         public string Url { get; set; }
         public string ClientId { get; set; }

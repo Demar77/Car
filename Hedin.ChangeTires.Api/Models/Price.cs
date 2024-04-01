@@ -1,6 +1,7 @@
-namespace Hedin.ChangeTires.Api.Models;
-
+﻿namespace Hedin.ChangeTires.Api.Models
+{
     public class Price
     {
-        public decimal Amount;
+        public decimal Amount { get; set; }
     }
+}

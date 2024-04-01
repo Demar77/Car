@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Net.Http;
-using System.Net.Http.Json;
 using Hedin.ChangeTires.Api.Configurations;
 
 namespace Hedin.ChangeTires.Api.ExternalIntegrations
 {
-    public class ExternalSlotApiClient
+    public class ExternalSlotApiClient : IExternalSlotApiClient
     {
         private readonly HttpClient _httpClient;
         private readonly ExternalServiceSettings _settings;
@@ -16,18 +12,19 @@ namespace Hedin.ChangeTires.Api.ExternalIntegrations
             _httpClient = httpClient;
             _settings = settings;
         }
-        public List<DateTime> GetAvailableSlots()
+
+        public List<Booking> GetBookedSlots()
         {
-            var response = _httpClient.GetAsync(_settings.Url + "/slots").Result;
+            var response = _httpClient.GetAsync(_settings.Url + "/slotsext").Result;
             response.EnsureSuccessStatusCode();
-            
-            var slots = response.Content.ReadFromJsonAsync<List<DateTime>>().Result;
-            return slots ?? new List<DateTime>();
+
+            var slots = response.Content.ReadFromJsonAsync<List<Booking>>().Result;
+            return slots ?? new List<Booking>();
         }
 
         public bool ConfirmBooking(DateTime slot)
         {
-            var response = _httpClient.PostAsJsonAsync(_settings.Url + "/slots", slot).Result;
+            var response = _httpClient.PostAsJsonAsync(_settings.Url + "/slotsext", slot).Result;
             return response.IsSuccessStatusCode;
         }
     }

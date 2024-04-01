@@ -1,6 +1,20 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hedin.ChangeTires.Api", "Hedin.ChangeTires.Api\Hedin.ChangeTires.Api.csproj", "{CE26E1AE-E1D4-4AB2-8BC1-D35F8DE13982}"
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34701.34
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hedin.ChangeTires.Api", "Hedin.ChangeTires.Api\Hedin.ChangeTires.Api.csproj", "{CE26E1AE-E1D4-4AB2-8BC1-D35F8DE13982}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Hedin.ChangeTires.Api.UnitTests", "Hedin.ChangeTires.Api.UnitTests\Hedin.ChangeTires.Api.UnitTests.csproj", "{658D4F69-DF92-4A0A-9558-B2A112C18E01}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hedin.ChangeTires.Application", "Hedin.ChangeTires.Application\Hedin.ChangeTires.Application.csproj", "{21972908-4AE1-4768-BEBB-5A3152D7B676}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hedin.ChangeTires.Infrastructure", "Hedin.ChangeTires.Infrastructure\Hedin.ChangeTires.Infrastructure.csproj", "{6A7BCA4C-9086-4530-918F-ED5E410C8189}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{DF4F48C3-0B7C-4479-9FFD-B611D7664C4E}"
+	ProjectSection(SolutionItems) = preProject
+		TODO.txt = TODO.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -12,5 +26,23 @@ Global
 		{CE26E1AE-E1D4-4AB2-8BC1-D35F8DE13982}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CE26E1AE-E1D4-4AB2-8BC1-D35F8DE13982}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CE26E1AE-E1D4-4AB2-8BC1-D35F8DE13982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{658D4F69-DF92-4A0A-9558-B2A112C18E01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{658D4F69-DF92-4A0A-9558-B2A112C18E01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{658D4F69-DF92-4A0A-9558-B2A112C18E01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{658D4F69-DF92-4A0A-9558-B2A112C18E01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{21972908-4AE1-4768-BEBB-5A3152D7B676}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{21972908-4AE1-4768-BEBB-5A3152D7B676}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{21972908-4AE1-4768-BEBB-5A3152D7B676}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{21972908-4AE1-4768-BEBB-5A3152D7B676}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A7BCA4C-9086-4530-918F-ED5E410C8189}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A7BCA4C-9086-4530-918F-ED5E410C8189}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A7BCA4C-9086-4530-918F-ED5E410C8189}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A7BCA4C-9086-4530-918F-ED5E410C8189}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {24366E11-864D-4AE6-9D72-1EB0787C912A}
 	EndGlobalSection
 EndGlobal

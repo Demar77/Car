@@ -1,9 +1,9 @@
 namespace Hedin.ChangeTires.Api.Services;
 
-using System;
-using System.Collections.Generic;
-using Hedin.ChangeTires.Api.ExternalIntegrations;
 using Hedin.ChangeTires.Api.Configurations;
+using Hedin.ChangeTires.Api.ExternalIntegrations;
+using Hedin.ChangeTires.Api.Models;
+using System.Collections.Generic;
 using System.Net.Http;
 
 public class SlotService
@@ -15,9 +15,9 @@ public class SlotService
         _externalSlotApiClient = new ExternalSlotApiClient(new HttpClient(), settings);
     }
 
-    public List<DateTime> GetAvailableSlots()
+    public List<Booking> GetAvailableSlots()
     {
-        var slots = _externalSlotApiClient.GetAvailableSlots();
+        var slots = _externalSlotApiClient.GetBookedSlots();
 
         return slots;
     }

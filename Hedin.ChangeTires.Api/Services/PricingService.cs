@@ -1,46 +1,48 @@
+﻿using Hedin.ChangeTires.Api.Models.Enums;
+using Hedin.ChangeTires.Api.Services.Interfaces;
+using Hedin.ChangeTires.Api.Strategies.Interfaces;
+
 namespace Hedin.ChangeTires.Api.Services;
 
-public class PricingService
+public class PricingService : IPricingService
 {
-    public decimal CalculatePrice(string carType, int tireSize, bool includeWheelAlignment)
+    private const int WheelAlignmentPrice = 50;
+    private readonly ITirePricing _tirePricing;
+    private readonly ICarTypePricing _carTypePricing;
+    private readonly ILogger<PricingService> _logger;
+
+    public PricingService(ITirePricing tirePricing, ICarTypePricing carTypePricing, ILogger<PricingService> logger)
     {
-        decimal price = 0;
+        _tirePricing = tirePricing;
+        _carTypePricing = carTypePricing;
+        _logger = logger;
+    }
 
-        if (carType == "Sedan")
+    public Price CalculatePrice(Car car)
+    {
+        try
         {
-            price = 100;
-        }
-        else if (carType == "SUV")
-        {
-            price = 120;
-        }
-        else if (carType == "Truck")
-        {
-            price = 150;
-        }
-        else
-        {
-            price = 90;
-        }
+            decimal price = 0;
 
-        if (tireSize <= 16)
-        {
-            price += 20;
-        }
-        else if (tireSize > 16 && tireSize <= 18)
-        {
-            price += 40;
-        }
-        else
-        {
-            price += 60;
-        }
-        
-        if (includeWheelAlignment)
-        {
-            price += 50;
-        }
+            CarType carTypeEnum;
 
-        return price;
+            if (!Enum.TryParse(car.CarType, out carTypeEnum))
+                carTypeEnum = CarType.Other;
+
+            price += _tirePricing.CalculateAdditionalTirePrice(car.TireSize);
+
+            price += _carTypePricing.CalculateAdditionalCarTypePrice(carTypeEnum);
+
+            //It is the simplest way but we may implement strategy pattern or if we have more options additional services add builder pattern, but know will be KISS
+            price += car.IsWheelBalancingRequired ? WheelAlignmentPrice : 0;
+
+            return new Price { Amount = price };
+     
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(message: ex.Message, ex);
+            throw;
+        }
     }
 }
